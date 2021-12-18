@@ -110,6 +110,7 @@ public class NekoConfig {
     public static boolean silenceNonContacts = false;
     public static boolean swipeToPiP = false;
     public static boolean disableJumpToNextChannel = false;
+    public static boolean hideGroupSticker;
 
     public static final String WS_ADDRESS = "ws.neko";
     private static int socksPort = -1;
@@ -209,6 +210,7 @@ public class NekoConfig {
             openArchiveOnPull = preferences.getBoolean("openArchiveOnPull", false);
             showHiddenFeature = preferences.getBoolean("showHiddenFeature5", false);
             hideKeyboardOnChatScroll = preferences.getBoolean("hideKeyboardOnChatScroll", false);
+            hideGroupSticker = preferences.getBoolean("hideGroupSticker", false);
             avatarAsDrawerBackground = preferences.getBoolean("avatarAsDrawerBackground", false);
             avatarBackgroundBlur = preferences.getBoolean("avatarBackgroundBlur", false);
             avatarBackgroundDarken = preferences.getBoolean("avatarBackgroundDarken", false);
@@ -630,6 +632,14 @@ public class NekoConfig {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("disableAppBarShadow", disableAppBarShadow);
+        editor.commit();
+    }
+
+    public static void toggleHideGroupSticker() {
+        hideGroupSticker = !hideGroupSticker;
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("nekoconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("hideGroupSticker", hideGroupSticker);
         editor.commit();
     }
 

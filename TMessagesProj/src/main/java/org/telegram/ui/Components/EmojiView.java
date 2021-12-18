@@ -109,6 +109,8 @@ import org.telegram.ui.Cells.StickerSetGroupInfoCell;
 import org.telegram.ui.Cells.StickerSetNameCell;
 import org.telegram.ui.ContentPreviewViewer;
 
+import tw.nekomimi.nekogram.NekoConfig;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Field;
@@ -3291,7 +3293,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             }
             stickerSets.add(pack);
         }
-        if (info != null) {
+        if (info != null && (!NekoConfig.hideGroupSticker)) {
             long hiddenStickerSetId = MessagesController.getEmojiSettings(currentAccount).getLong("group_hide_stickers_" + info.id, -1);
             TLRPC.Chat chat = MessagesController.getInstance(currentAccount).getChat(info.id);
             if (chat == null || info.stickerset == null || !ChatObject.hasAdminRights(chat)) {

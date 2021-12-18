@@ -72,6 +72,7 @@
     <string name="UserRestrictionsSendStickers2">Send Stickers</string>
     <string name="UserRestrictionsSendGifs">Send GIFs</string>
     <string name="ShowTabsOnForward">Show tabs on forward</string>
+    <string name="HideGroupSticker">Hide group sticker</string>
     <string name="CheckAllAdministrated">Add administrated</string>
     <string name="RearVideoMessages">Rear camera in Video Messages</string>
     <string name="HideAllTab">Hide \"All Chats\" tab</string>

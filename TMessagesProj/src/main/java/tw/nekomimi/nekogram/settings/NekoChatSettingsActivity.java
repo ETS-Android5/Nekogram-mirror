@@ -83,6 +83,7 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
     private int hideAllTabRow;
     private int tabsTitleTypeRow;
     private int folders2Row;
+    private int hideGroupStickerRow;
 
     @Override
     public boolean onFragmentCreate() {
@@ -157,6 +158,11 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                 NekoConfig.toggleHideKeyboardOnChatScroll();
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(NekoConfig.hideKeyboardOnChatScroll);
+                }
+            } else if (position == hideGroupStickerRow) {
+                NekoConfig.toggleHideGroupSticker();
+                if (view instanceof TextCheckCell) {
+                    ((TextCheckCell) view).setChecked(NekoConfig.hideGroupSticker);
                 }
             } else if (position == showTabsOnForwardRow) {
                 NekoConfig.toggleShowTabsOnForward();
@@ -248,6 +254,7 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
         ignoreBlockedRow = rowCount++;
         disablePhotoSideActionRow = rowCount++;
         hideKeyboardOnChatScrollRow = rowCount++;
+        hideGroupStickerRow = rowCount++;
         rearVideoMessagesRow = rowCount++;
         confirmAVRow = rowCount++;
         tryToOpenAllLinksInIVRow = rowCount++;
@@ -598,6 +605,8 @@ public class NekoChatSettingsActivity extends BaseFragment implements Notificati
                         textCell.setTextAndCheck(LocaleController.getString("DisablePhotoViewerSideAction", R.string.DisablePhotoViewerSideAction), NekoConfig.disablePhotoSideAction, true);
                     } else if (position == hideKeyboardOnChatScrollRow) {
                         textCell.setTextAndCheck(LocaleController.getString("HideKeyboardOnChatScroll", R.string.HideKeyboardOnChatScroll), NekoConfig.hideKeyboardOnChatScroll, true);
+                    } else if (position == hideGroupStickerRow) {
+                        textCell.setTextAndCheck(LocaleController.getString("HideGroupSticker", R.string.HideGroupSticker), NekoConfig.hideGroupSticker, true);
                     } else if (position == showTabsOnForwardRow) {
                         textCell.setTextAndCheck(LocaleController.getString("ShowTabsOnForward", R.string.ShowTabsOnForward), NekoConfig.showTabsOnForward, true);
                     } else if (position == rearVideoMessagesRow) {
