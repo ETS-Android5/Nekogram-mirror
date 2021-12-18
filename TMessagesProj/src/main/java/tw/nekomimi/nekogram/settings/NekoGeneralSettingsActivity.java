@@ -419,9 +419,15 @@ public class NekoGeneralSettingsActivity extends BaseFragment {
 
         translatorRow = rowCount++;
         externalTranslatorRow = rowCount++;
-        translationProviderRow = NekoConfig.useExternalTranslator ? -1 : rowCount++;
-        translationTargetRow = NekoConfig.useExternalTranslator ? -1 : rowCount++;
-        deepLFormalityRow = NekoConfig.useExternalTranslator ? -1 : NekoConfig.translationProvider == Translator.PROVIDER_DEEPL ? rowCount++ : -1;
+        if (!NekoConfig.useExternalTranslator) {
+            translationProviderRow = rowCount++;
+            translationTargetRow = rowCount++;
+            deepLFormalityRow = NekoConfig.translationProvider == Translator.PROVIDER_DEEPL ? rowCount++ : -1;
+        } else {
+            translationProviderRow = -1;
+            translationTargetRow = -1;
+            deepLFormalityRow = -1;
+        }
         translator2Row = rowCount++;
 
         generalRow = rowCount++;
