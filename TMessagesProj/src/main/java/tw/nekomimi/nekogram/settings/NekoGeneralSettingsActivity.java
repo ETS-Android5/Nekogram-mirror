@@ -87,6 +87,7 @@ public class NekoGeneralSettingsActivity extends BaseFragment {
     private int notification2Row;
 
     private int translatorRow;
+    private int externalTranslatorRow;
     private int translationProviderRow;
     private int translationTargetRow;
     private int deepLFormalityRow;
@@ -352,6 +353,20 @@ public class NekoGeneralSettingsActivity extends BaseFragment {
                 if (view instanceof TextCheckCell) {
                     ((TextCheckCell) view).setChecked(NekoConfig.silenceNonContacts);
                 }
+            } else if (position == externalTranslatorRow) {
+                NekoConfig.toggleUseExternalTranslator();
+                if (view instanceof TextCheckCell) {
+                    TextCheckCell cell = (TextCheckCell) view;
+                    cell.setChecked(NekoConfig.useExternalTranslator);
+                    cell.setNeedDivider(!NekoConfig.useExternalTranslator);
+                }
+                if (NekoConfig.useExternalTranslator) {
+                    listAdapter.notifyItemRangeRemoved(translationProviderRow, NekoConfig.translationProvider == Translator.PROVIDER_DEEPL ? 3 : 2);
+                    updateRows(false);
+                } else {
+                    updateRows(false);
+                    listAdapter.notifyItemRangeInserted(translationProviderRow, NekoConfig.translationProvider == Translator.PROVIDER_DEEPL ? 3 : 2);
+                }
             }
         });
 
@@ -403,9 +418,10 @@ public class NekoGeneralSettingsActivity extends BaseFragment {
         notification2Row = rowCount++;
 
         translatorRow = rowCount++;
-        translationProviderRow = rowCount++;
-        translationTargetRow = rowCount++;
-        deepLFormalityRow = NekoConfig.translationProvider == Translator.PROVIDER_DEEPL ? rowCount++ : -1;
+        externalTranslatorRow = rowCount++;
+        translationProviderRow = NekoConfig.useExternalTranslator ? -1 : rowCount++;
+        translationTargetRow = NekoConfig.useExternalTranslator ? -1 : rowCount++;
+        deepLFormalityRow = NekoConfig.useExternalTranslator ? -1 : NekoConfig.translationProvider == Translator.PROVIDER_DEEPL ? rowCount++ : -1;
         translator2Row = rowCount++;
 
         generalRow = rowCount++;
@@ -617,6 +633,8 @@ public class NekoGeneralSettingsActivity extends BaseFragment {
                         textCell.setTextAndCheck(LocaleController.getString("AccentAsNotificationColor", R.string.AccentAsNotificationColor), NekoConfig.accentAsNotificationColor, true);
                     } else if (position == silenceNonContactsRow) {
                         textCell.setTextAndCheck(LocaleController.getString("SilenceNonContacts", R.string.SilenceNonContacts), NekoConfig.silenceNonContacts, false);
+                    } else if (position == externalTranslatorRow) {
+                        textCell.setTextAndCheck(LocaleController.getString("UseExternalTranslatorApp", R.string.UseExternalTranslatorApp), NekoConfig.useExternalTranslator, translationProviderRow != -1);
                     }
                     break;
                 }
@@ -709,7 +727,7 @@ public class NekoGeneralSettingsActivity extends BaseFragment {
             } else if (position == eventTypeRow || position == nameOrderRow || position == idTypeRow || position == translationProviderRow ||
                     position == translationTargetRow || position == deepLFormalityRow) {
                 return 2;
-            } else if (position == ipv6Row || position == newYearRow ||
+            } else if (position == ipv6Row || position == newYearRow || position == externalTranslatorRow ||
                     (position > appearanceRow && position <= disableNumberRoundingRow) ||
                     (position > generalRow && position < nameOrderRow) ||
                     (position > drawerRow && position < drawer2Row) ||
