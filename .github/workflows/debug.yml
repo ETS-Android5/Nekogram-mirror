@@ -8,10 +8,6 @@ on:
     branches:
       - master
   workflow_dispatch:
-    inputs:
-      artifacts:
-        description: "y, if need artifacts"
-        required: false
 
 jobs:
   build:
@@ -48,7 +44,6 @@ jobs:
           ./gradlew TMessagesProj:assemble
 
       - uses: actions/upload-artifact@v2
-        if: github.event.inputs.artifacts == 'y'
         name: Upload apk
         with:
           name: Nekogram
