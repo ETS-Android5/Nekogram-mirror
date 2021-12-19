@@ -199,4 +199,14 @@ public final class ApkInstaller {
             return intent;
         }
     }
+
+    public static class UpdateReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (Intent.ACTION_MY_PACKAGE_REPLACED.equals(intent.getAction())) {
+                context.startActivity(new Intent().setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).setClass(context, LaunchActivity.class));
+            }
+        }
+    }
 }
