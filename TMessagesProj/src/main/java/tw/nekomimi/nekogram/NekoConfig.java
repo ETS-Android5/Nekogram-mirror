@@ -110,6 +110,7 @@ public class NekoConfig {
     public static boolean silenceNonContacts = false;
     public static boolean swipeToPiP = false;
     public static boolean disableJumpToNextChannel = false;
+    public static boolean useExternalTranslator = false;
 
     public static boolean hideGroupSticker;
     public static boolean useExternalTranslator = false;
