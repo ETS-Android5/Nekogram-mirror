@@ -113,7 +113,6 @@ public class NekoConfig {
     public static boolean useExternalTranslator = false;
 
     public static boolean hideGroupSticker;
-    public static boolean useExternalTranslator = false;
 
     public static final String WS_ADDRESS = "ws.neko";
     private static int socksPort = -1;
