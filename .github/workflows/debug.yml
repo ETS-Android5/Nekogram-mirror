@@ -24,6 +24,7 @@ jobs:
           path: |
             TMessagesProj/jni/ffmpeg/build
             TMessagesProj/jni/boringssl/build
+            TMessagesProj/build
           key: ${{ hashFiles('TMessagesProj/jni/**') }}
       - name: Gradle cache
         uses: actions/cache@v2
