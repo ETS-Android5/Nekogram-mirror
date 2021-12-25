@@ -174,4 +174,5 @@
     <string name="QRLoginTitle">QR Login</string>
     <string name="NoTranslatorAppInstalled">Du har ikke applikationer, der kan håndtere oversættelseshensigter. Installer venligst en for at fortsætte</string>
     <string name="UseExternalTranslatorApp">Brug ekstern oversætter app</string>
+    <!-- Accessibility -->
 </resources>
