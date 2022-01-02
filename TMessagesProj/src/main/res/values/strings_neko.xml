@@ -184,7 +184,6 @@
     <string name="NoTranslatorAppInstalled">You don\'t have applications that can handle translate intent, please install one to continue</string>
     <string name="UseExternalTranslatorApp">Use external translator app</string>
     <string name="DisableVoiceMessagesAutoPlay">Disable auto-play of voice messages</string>
-    <string name="DisableVoiceMessagesAutoPlay">Disable auto-play of voice messages</string>
     <string name="TranslatorType">Type</string>
     <string name="TranslatorTypeNeko">In message</string>
     <string name="TranslatorTypeTG">Popup dialog</string>
